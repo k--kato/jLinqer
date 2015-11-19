@@ -9,6 +9,6 @@ test:
   override:
     - mvn integration-test
   post:
-    - mvn -Drepotoken $COVERALLS_TOKEN clean test jacoco:report coveralls:report
+    - mvn clean test jacoco:report coveralls:report -Drepotoken $COVERALLS_TOKEN
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
